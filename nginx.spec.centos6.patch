@@ -2,13 +2,13 @@
 +++ nginx.spec
 @@ -48,7 +48,7 @@ BuildRequires: systemd
  # end of distribution specific definitions
- 
- %define main_version 1.10.3
+
+ %define main_version 1.13.3
 -%define main_release 1%{?dist}.ngx
 +%define main_release dda1%{?dist}.ngx
- 
+
  %define bdir %{_builddir}/%{name}-%{main_version}
- 
+
 @@ -61,6 +61,7 @@ Summary: High performance web server
  Name: nginx
  Version: %{main_version}
@@ -75,7 +75,7 @@
 +    --without-mail_smtp_module \
 +    --add-module=../headers-more-nginx-module-0.29
  make %{?_smp_mflags}
- 
+
  %install
 @@ -121,10 +151,13 @@ make %{?_smp_mflags}
  %{__make} DESTDIR=$RPM_BUILD_ROOT INSTALLDIRS=vendor install
@@ -130,7 +130,7 @@
 -%dir %{_datadir}/nginx
 -%dir %{_datadir}/nginx/html
 -%{_datadir}/nginx/html/*
- 
+
  %attr(0755,root,root) %dir %{_localstatedir}/cache/nginx
  %attr(0755,root,root) %dir %{_localstatedir}/log/nginx
 @@ -308,6 +333,9 @@ if [ $1 -ge 1 ]; then
@@ -138,8 +138,8 @@
  
  %changelog
 +* Tue Mar 21 2017 Diogo Dutra <dutradda@gmail.com>
-+- 1.10.3 with Headers More module
++- 1.13.3 with Headers More module
 +
  * Tue Jan 31 2017 Konstantin Pavlov <thresh@nginx.com>
- - 1.10.3
+ - 1.13.3
  - Extended hardening build flags.
